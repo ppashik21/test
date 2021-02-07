@@ -1,3 +1,4 @@
 # test
 get-adcomputer namePC -properties *|select lastlogondate
-#vadn_v1
+#vand_v1
+#vand_v2
