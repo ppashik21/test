@@ -7,6 +7,8 @@ sudo apt-get install nfs-kernel-server nfs-common portmap -y
 chkconfig --level 35 portmap on
 chkconfig --level 35 nfs on
 mkdir /nfsshare
+sudo chown nobody:nogroup /nfsshare
+sudo chmod 755 /nfsshare
 nano /etc/exports
 /nfsshare 192.168.4.96(rw,sync,no_root_squash)
 
