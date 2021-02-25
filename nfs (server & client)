@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ $HOSTNAME == "debian" ]; then
+
+sudo apt-get install nfs-utils nfs-utils-lib portmap -y
+/etc/init.d/portmap start
+/etc/init.d/nfs start
+chkconfig --level 35 portmap on
+chkconfig --level 35 nfs on
+mkdir /nfsshare
+vi /etc/exports
+/nfsshare 192.168.4.96(rw,sync,no_root_squash)
+
+
+else
+
+showmount -e 192.168.5.2
+Export list for 192.168.5.2:
+/nfsshare 192.168.4.96
+mount -t nfs 192.168.5.2:/nfsshare /mnt/nfsshare
+vi /etc/fstab
+192.168.5.2:/nfsshare /mnt  nfs defauls 0 0
+
+fi
