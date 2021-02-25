@@ -14,6 +14,11 @@ vi /etc/exports
 
 else
 
+sudo apt-get install nfs-utils nfs-utils-lib portmap -y
+/etc/init.d/portmap start
+/etc/init.d/nfs start
+chkconfig --level 35 portmap on
+chkconfig --level 35 nfs on
 showmount -e 192.168.5.2
 Export list for 192.168.5.2:
 /nfsshare 192.168.4.96
