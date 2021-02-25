@@ -1,0 +1,102 @@
+#!/bin/bash
+
+sudo apt-get install rsnapshot rsync -y
+ssh-keygen -t rsa
+ssh-copy-id 192.168.4.96
+ssh root@192.168.4.96
+vim /etc/rsnapshot.conf
+backup /root/
+backup /home/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#sudo apt-get install rsync -y
+#mcedit /etc/default/rsync
+#RSYNC_ENABLE=true
+#touch /etc/rsyncd.conf
+#systemctl enable --now rsync
+#mcedit /etc/rsyncd.conf
+#pid file = /var/run/rsyncd.pid
+#log file = /var/log/rsyncd.log
+#transfer logging = true
+#munge symlinks = yes
+
+# папка источник для бэкапа
+#[data]
+#path = /data
+#uid = root
+#read only = yes
+#list = yes
+#comment = Data backup Dir
+#auth users = backup
+#secrets file = /etc/rsyncd.scrt
+
+#mcedit /etc/rsyncd.scrt
+#backup:12345
+
+#chmod 0600 /etc/rsyncd.scrt
+
+#systemctl restart rsync
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Папка, куда будем складывать архивы
+#syst_dir=/backup/
+# Имя сервера, который архивируем
+#srv_name=debian
+# Адрес сервера, который архивируем
+#srv_ip=192.168.5.2
+# Пользователь rsync на сервере, который архивируем
+#srv_user=backup
+# Ресурс на сервере для бэкапа
+#srv_dir=data
+#echo "Start backup ${srv_name}"
+# Создаем папку для инкрементных бэкапов
+#mkdir -p ${syst_dir}${srv_name}/increment/
+# Запускаем непосредственно бэкап с параметрами
+#/usr/bin/rsync -avz --progress --delete --password-file=/etc/rsyncd.scrt ${srv_user}@${srv_ip}::${srv_dir} ${syst_dir}${srv_name}/current/ --backup --backup-dir=${syst_dir}${srv_name}/increment/`date +%Y-%m-%d`/
+# Чистим папки с инкрементными архивами старше 30-ти дней
+#/usr/bin/find ${syst_dir}${srv_name}/increment/ -maxdepth 1 -type d -mtime +30 -exec rm -rf {} \;
+#date
+#echo "Finish backup ${srv_name}"
